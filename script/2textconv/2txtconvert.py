@@ -1,11 +1,10 @@
 import os
 import sys
 import zipfile, re
-from bs4 import BeautifulSoup
 import pdfextract
 
 def main(argv):
-    ipdir = argv[0]
+    ipdir = argv[1]
     addr = "../../public/uploads/" + ipdir
     os.chdir(addr)
     for files in os.listdir("."):
@@ -16,8 +15,7 @@ def main(argv):
             outfile = inputfile[:-5]+'.txt'
             document = zipfile.ZipFile(inputfile)
             content = document.read('word/document.xml')
-            soup = BeautifulSoup(content, 'xml')
-            #cleaned = re.sub('<(.|\n)*?>','',content)
+            cleaned = re.sub('<(.|\n)*?>','',content)
             outfp = file(outfile, 'w')
             outfp.write(cleaned)
             outfp.close()
