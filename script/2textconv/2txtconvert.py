@@ -1,7 +1,6 @@
 import os
 import sys
 import zipfile, re
-from bs4 import BeautifulSoup
 import pdfextract
 
 def main(argv):
@@ -16,8 +15,7 @@ def main(argv):
             outfile = inputfile[:-5]+'.txt'
             document = zipfile.ZipFile(inputfile)
             content = document.read('word/document.xml')
-            soup = BeautifulSoup(content, 'xml')
-            #cleaned = re.sub('<(.|\n)*?>','',content)
+            cleaned = re.sub('<(.|\n)*?>','',content)
             outfp = file(outfile, 'w')
             outfp.write(cleaned)
             outfp.close()
