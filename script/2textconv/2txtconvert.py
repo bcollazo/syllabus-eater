@@ -5,9 +5,9 @@ import pdfextract
 
 def main(argv):
     ipdir = argv[1]
-    addr = "../../public/uploads/" + ipdir
+    addr = "../public/uploads/" + ipdir
     os.chdir(addr)
-    for files in os.listdir("."):
+    for inputfile in os.listdir("."):
         if inputfile.endswith('.pdf'):
             outfile = inputfile[:-3]+'txt'
             pdfextract.pdf2text(inputfile,outfile)
