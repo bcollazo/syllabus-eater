@@ -15,6 +15,10 @@ class MainController < ApplicationController
 			file.write(uploaded_io.read)
 			end
 		end
+
+		value = %x(pwd 2>&1)
+		puts "BRYAN ESSS EL CABALLO!! ", value
+
 		redirect_to dashboard_url
 	end
 
