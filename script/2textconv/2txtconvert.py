@@ -4,7 +4,7 @@ import zipfile, re
 import pdfextract
 
 def main(argv):
-    ipdir = argv[0]
+    ipdir = argv[1]
     addr = "../../public/uploads/" + ipdir
     os.chdir(addr)
     for files in os.listdir("."):
