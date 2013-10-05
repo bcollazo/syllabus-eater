@@ -2,15 +2,15 @@
 
 	<div class="page-header"><h1>Sylla-bye</h1></div>
 
-	<div class="container">
-		<div class="offset3 span6">
+	<div class="row">
+		<div class="well offset3 span6">
 			<%= form_tag({action: :upload}, multipart: true) do %>
 			  <%= file_field_tag '1', :class => "span12" %>
 			  <%= file_field_tag '2', :class => "span12" %>
 			  <%= file_field_tag '3', :class => "span12" %>
 			  <%= file_field_tag '4', :class => "span12" %>
 			  <%= file_field_tag '5', :class => "span12" %>
-			  <%= submit_tag 'Submit', :class => "btn btn-primary" %>
+			  <%= submit_tag 'Submit', :class => "pull-right btn btn-large btn-primary" %>
 			<% end %>
 		</div>
 	</div>
