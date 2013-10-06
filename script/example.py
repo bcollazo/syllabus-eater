@@ -11,7 +11,7 @@ EMAIL_REGEXP = '' #TODO: Kido fill in
 PHONE_REGEXP = '' #TODO: Kido fill in
 
 # INITIALIZE EMPTY CLASS
-course = {"code": (None, 0),
+course = {"id": (None, 0),
 	"title": (None, 0),
 	"prof_name": (None, 0),
 	"email": (None, 0),
@@ -19,32 +19,11 @@ course = {"code": (None, 0),
 	"meeting_times": (None, 0),
 	"location": (None, 0),
 	"important_dates": (None, 0),
-	"grading_scheme":(None, 0)}
+	"grading_scheme": (None, 0)}
 
+	
 
-f = open('../public/uploads/18510.txt', 'r')
-demo_text = f.read()
-n = len(demo_text)
-demo_text_sentences = demo_text.split(".")
-for i in demo_text_sentences
-
-	sentence = i.strip()
-	if sentence == "":
-		print("Text '"+i+"' is empty")
-		continue
-	print("Sentence to be processed:", i)
-
-	entities = getEntities(sentence)
-
-
-
-
-
-
-
-
-
-def getEntities(demo_text)
+def getEntities(demo_text):
 #	print('############################################')
 #	print('#   Entity Extraction Example              #')
 #	print('############################################')
@@ -64,7 +43,7 @@ def getEntities(demo_text)
 		print('Error in entity extraction call: ', response['statusInfo'])
 		return None
 
-def getKeywords(demo_text)
+def getKeywords(demo_text):
 #	print('############################################')
 #	print('#   Keyword Extraction Example             #')
 #	print('############################################')
@@ -75,7 +54,7 @@ def getKeywords(demo_text)
 #		print('## Response Object ##')
 #		print(json.dumps(response, indent=4))
 		for keyword in response['keywords']:
-			keywors.append(keyword)
+			keywords.append(keyword)
 #			print('text: ', keyword['text'])
 #			print('relevance: ', keyword['relevance'])
 		return keywords
@@ -84,7 +63,7 @@ def getKeywords(demo_text)
 		return None
 
 
-def getConcepts(demo_text)
+def getConcepts(demo_text):
 	print('############################################')
 	print('#   Concept Tagging Example                #')
 	print('############################################')
@@ -106,7 +85,7 @@ def getConcepts(demo_text)
 		print('Error in concept tagging call: ', response['statusInfo'])
 
 
-def getCategory(demo_text)
+def getCategory(demo_text):
 	print('############################################')
 	print('#   Text Categorization Example            #')
 	print('############################################')
@@ -127,4 +106,28 @@ def getCategory(demo_text)
 		print('Error in text categorization call: ', response['statusInfo'])
 
 
+def processSyllabus():
+	f = open('../public/uploads/18510.txt', 'r')
+	demo_text = f.read()
+	n = len(demo_text)
+	demo_text_sentences = demo_text.split("\n")
+	for i in demo_text_sentences:
 
+		sentence = i.strip()
+		if sentence == "":
+			print("Text '"+i+"' is empty")
+			continue
+		print("")
+		print("Sentence to be processed:", i)
+
+		entities = getEntities(sentence)
+
+		keywords = getKeywords(sentence)
+
+		if entities != None:
+			print("Entities:", [u["text"] for u in entities])
+		if keywords != None:
+			print("Keywords:", [u["text"] for u in keywords])
+
+
+processSyllabus()
