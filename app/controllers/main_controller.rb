@@ -29,9 +29,9 @@ class MainController < ApplicationController
 
 		value = %x('python scripts/2textconv/2totextconverter.py '+ip_address+ ' 2>&1')
 
-		kidoutput = %x('python alchemy.py 2>&1')
+		#kidoutput = %x('python alchemy.py 2>&1')
 
-		@classes = ["18.404 Theory"]
+		@classes = ["18.404 Theory","Mathematics for Men"]
 	end
 
 end
