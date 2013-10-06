@@ -5,7 +5,7 @@ import pdfextract
 
 def main(argv):
     ipdir = argv[1]
-    addr = "../../public/uploads/"+ipdir
+    addr = "public/uploads/"+ipdir
     os.chdir(addr)
     for inputfile in os.listdir("."):
         if inputfile.endswith('.pdf'):

@@ -113,11 +113,15 @@ def getCategory(demo_text):
 def getString(unic):
 	return unicodedata.normalize('NFKD', unic).encode('ascii','ignore')
 
+def addImpDate(sentence):
+	if course["important_dates"][0] == None:
+		course["important_dates"] = ([sentence], 1) #TODO: LOL... VERY CONFIDENT...
+	else:
+		course["important_dates"] = (course["important_dates"][0] + [sentence], 1)
+
 
 def processSyllabus():
-	print(DATES_KWS)
-
-	f = open('../public/uploads/127.0.0.1/6046.txt', 'r')
+	f = open('public/uploads/127.0.0.1/6046.txt', 'r')
 	demo_text = f.read()
 	n = len(demo_text)
 	demo_text_sentences = demo_text.split(". ")
@@ -133,12 +137,15 @@ def processSyllabus():
 			
 		if keywords != None:
 			if len(DATES_KWS.intersection({u["text"].lower() for u in keywords})) != 0:
-				print("")
-				print("Sentence to be processed:", i)
-				print("BINGO!")
+				addImpDate(sentence)
+#				print("")
+#				print("Sentence to be processed:", i)
 				if entities != None:
-					print("Entities:", [u["text"] for u in entities])
-					print("Keywords:", [u["text"] for u in keywords])
+					pass
+#					print("\t\tEntities:", [u["text"] for u in entities])
+#					print("\t\tKeywords:", [u["text"] for u in keywords])
 
+	print(json.dumps(course, indent=4))
 
-processSyllabus()
+if __name__ == "__main__": 
+	processSyllabus()
