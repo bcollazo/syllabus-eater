@@ -34,4 +34,7 @@ class MainController < ApplicationController
 		@classes = ["18.404 Theory"]
 	end
 
+	def about
+	end
+
 end

@@ -8,9 +8,9 @@ alchemyapi = AlchemyAPI()
 
 # CONSTANTS
 PROF_KWS = {'prof.', 'professor', 'instructor', 'teacher', 'lecturer'}
-WEEKDAYS = {'monday', 'tuesday', 'wednesday', 'thursday', 'friday'}
-MONTHS = {'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'november', 'december'}
-DATES_KWS = {'date', 'dates', 'meeting', 'meetings', 'appointment', 'appointments'}.union(WEEKDAYS).union(MONTHS)
+WEEKDAYS = {'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'mon', 'tue', 'wed', 'thurs', 'fri'}
+MONTHS = {'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'november', 'december', 'jan', 'feb', 'mar', 'apr', 'jun', 'jul', 'aug', 'sep', 'dec'}
+DATES_KWS = {'date', 'dates', 'meeting', 'meetings', 'appointment', 'appointments', 'office', 'hours'}.union(WEEKDAYS).union(MONTHS)
 EMAIL_REGEXP = '' #TODO: Kido fill in
 PHONE_REGEXP = '' #TODO: Kido fill in
 
@@ -23,7 +23,8 @@ course = {"id": (None, 0),
 	"meeting_times": (None, 0),
 	"location": (None, 0),
 	"important_dates": (None, 0),
-	"grading_scheme": (None, 0)}
+	"grading_scheme": (None, 0),
+	"website":(None, 0)}
 
 
 def getEntities(demo_text):
@@ -109,13 +110,17 @@ def getCategory(demo_text):
 		print('Error in text categorization call: ', response['statusInfo'])
 
 
+def getString(unic):
+	return unicodedata.normalize('NFKD', unic).encode('ascii','ignore')
+
+
 def processSyllabus():
 	print(DATES_KWS)
 
-	f = open('../public/uploads/18510.txt', 'r')
+	f = open('../public/uploads/127.0.0.1/6046.txt', 'r')
 	demo_text = f.read()
 	n = len(demo_text)
-	demo_text_sentences = demo_text.split("\n")
+	demo_text_sentences = demo_text.split(". ")
 	for i in demo_text_sentences:
 
 		sentence = i.strip()
@@ -125,11 +130,8 @@ def processSyllabus():
 
 		entities = getEntities(sentence)
 		keywords = getKeywords(sentence)
-
-		def getString(unic):
-			return unicodedata.normalize('NFKD', unic).encode('ascii','ignore').lowercase()
 			
-		if keywords == None:
+		if keywords != None:
 			if len(DATES_KWS.intersection({u["text"].lower() for u in keywords})) != 0:
 				print("")
 				print("Sentence to be processed:", i)

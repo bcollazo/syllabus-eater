@@ -60,6 +60,8 @@ SyllabusEater::Application.routes.draw do
 
   match "/dashboard" => "main#dashboard"
 
+  match "/about" => "main#about"
+
   root :to => "main#index"
 
 end
