@@ -1,13 +1,58 @@
-<div class="container">
+<div class="navbar navbar-static-top">
+  <ul class="nav nav-pills">
+     <li>
+     <a href="/">Home</a>
+     </li>
+     <li class="active"><a href="/dashboard">Dashboard</a></li>
+     <li><a href="/about">About</a></li>
+     </ul>    
+</div>
 
-	<div class="page-header"><h1>Your dashboard</h1></div>
-
-	<% @classes.each do |c| %>
-	<div class="row-fluid">
+<div class="container-fluid">
+  <div class="page-header"><h1>Stellar++</h1></div>
+  <div class="row-fluid">
+  <div class="span2"><h3>Classes</h3><p></p>
+    <% @classes.each do |c| %>
+	 <div class="row-fluid">
 		<div class="well span12">
-			<h3><%= c %></h3>
+			<%= c %>
 		</div>
 	</div>
 	<% end %>
-
+  </div>
+  <div class="span10">
+	<div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Course & Contact Information</a></li>
+        <li><a href="#tab2" data-toggle="tab">Meeting Times & Dates</a></li>
+        <li><a href="#tab3" data-toggle="tab">Grading Scheme</a></li>
+        <li><a href="#tab4" data-toggle="tab">Locations</a></li>
+      </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+    <% @classes.each do |c| %>
+	  <div class="row-fluid">
+		<div class="span12">	
+      <p><strong>Instructor</strong></p>
+      <p><%= @information[c]["prof_name"] %></p>
+      </div>
+      </div>
+	<% end %>
+      <p><a href="mailto:#">kidhanis@mit.edu</a></p>
+      <p>1-800-PERREOS</p>
+      <p>Iglesia del Perreo (Office)</p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <iframe src="https://www.google.com/calendar/embed?src=97govrrrbtgthvpq8q1s4r4p5c%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div class="tab-pane" id="tab3">
+      The professor just picks cutoffs at random.
+    </div>
+    <div class="tab-pane" id="tab4">
+      In the future, we would like to embed whereis.mit.edu here with the balloons at the lectures, recitations, office hours, etc.
+      </div>
+   </div>
+  </div>
+ </div>
+</div>
 </div>
