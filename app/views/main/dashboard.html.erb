@@ -10,7 +10,13 @@
 
 <div class="container-fluid">
   <div class="page-header"><h1>Stellar++</h1></div>
-  <div class="row-fluid">
+  <div id="loadingspan" class="row-fluid">
+  <div class="container text-center">
+	<%= image_tag("loading.gif") %>
+	<h1>Processing your Syllabi, please wait...</h1>
+  </div>
+  </div>
+  <div id="classesPanel"class="row-fluid">
   <div class="span2"><h3>Classes</h3><p></p>
     <% @classes.each do |c| %>
 	 <div class="row-fluid">

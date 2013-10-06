@@ -62,6 +62,8 @@ SyllabusEater::Application.routes.draw do
 
   match "/about" => "main#about"
 
+  get "/processSyllabus" => "main#processSyllabus"
+
   match "/auth/:provider/callback" => "main#callback"
 
   root :to => "main#index"
