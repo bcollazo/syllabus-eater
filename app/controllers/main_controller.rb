@@ -25,9 +25,9 @@ class MainController < ApplicationController
 	end
 
 	def dashboard
-		cid = params[:cal_id]
-		@classes = ["Theory de Computacion","Mathematics for Men", "Machine Learning"]
-		@information = {"Theory de Computacion"=>{"code"=>["1.111", 0], "prof_name"=>["Sadoway", 0], "email"=>["sadoway@mit.edu", 0], "phone"=>["111-111-1111", 0], "meeting_times"=>["Google calendar quick add magic", 0], "location"=>["10-250", 0], "important_dates"=>["More black magic papi", 0], "grading_scheme"=>["not enough vespene gas", 0], "website"=>["www.mit.edu",0], "calendar"=>["97govrrrbtgthvpq8q1s4r4p5c",0], "office"=>["9-999",0]}, "Mathematics for Men"=>{"code"=>["1.112", 0], "prof_name"=>["Kelner", 0], "email"=>["kelner@mit.edu", 0], "phone"=>["222-222-2222", 0], "meeting_times"=>["Google calendar quick add magic", 0], "location"=>["Walker", 0], "important_dates"=>["More black magic papi", 0], "grading_scheme"=>["not enough vespene gas", 0], "website"=>["www.mit.edu",0], "calendar"=>["97govrrrbtgthvpq8q1s4r4p5c",0], "office"=>["8-888",0]}, "Machine Learning"=>{"code"=>["1.113", 0], "prof_name"=>["Jaakola", 0], "email"=>["jaakola@mit.edu", 0],"phone"=>["333-333-3333", 0], "meeting_times"=>["Google calendar quick add magic", 0], "location"=>["54-100", 0], "important_dates"=>["More black magic papi", 0],"grading_scheme"=>["not enough vespene gas", 0], "website"=>["www.mit.edu",0], "calendar"=>["97govrrrbtgthvpq8q1s4r4p5c",0], "office"=>["7-777",0]}}
+		cid = params[:cal_id].split("@")[0]
+		@classes = ["Theory de Computacion","Probability Theory", "Machine Learning"]
+		@information = {"Theory de Computacion"=>{"code"=>["1.111", 0], "prof_name"=>["Sadoway", 0], "email"=>["sadoway@mit.edu", 0], "phone"=>["111-111-1111", 0], "meeting_times"=>["Google calendar quick add magic", 0], "location"=>["10-250", 0], "important_dates"=>["More black magic papi", 0], "grading_scheme"=>["not enough vespene gas", 0], "website"=>["www.mit.edu",0], "calendar"=>[cid,0], "office"=>["9-999",0]}, "Probability Theory"=>{"code"=>["1.112", 0], "prof_name"=>["Kelner", 0], "email"=>["kelner@mit.edu", 0], "phone"=>["222-222-2222", 0], "meeting_times"=>["Google calendar quick add magic", 0], "location"=>["Walker", 0], "important_dates"=>["More black magic papi", 0], "grading_scheme"=>["not enough vespene gas", 0], "website"=>["www.mit.edu",0], "calendar"=>[cid,0], "office"=>["8-888",0]}, "Machine Learning"=>{"code"=>["1.113", 0], "prof_name"=>["Jaakola", 0], "email"=>["jaakola@mit.edu", 0],"phone"=>["333-333-3333", 0], "meeting_times"=>["Google calendar quick add magic", 0], "location"=>["54-100", 0], "important_dates"=>["More black magic papi", 0],"grading_scheme"=>["not enough vespene gas", 0], "website"=>["www.mit.edu",0], "calendar"=>[cid,0], "office"=>["7-777",0]}}
 	end
 
 	def processSyllabus
@@ -72,9 +72,18 @@ class MainController < ApplicationController
 
 
 		result = client.execute(
-			:api_method => service.events.quickAdd,
-            :parameters => {'calendarId' => calendar_id},
-            :text => "Dinner tomorrow at 7:00pm",
+			:api_method => service.events.quick_add,
+            :parameters => {'calendarId' => calendar_id, 'text' => 'Quiz 2 Tue 8 october at 7:00pm'},
+            :headers => {'Content-Type' => 'application/json'})
+
+		result = client.execute(
+			:api_method => service.events.quick_add,
+            :parameters => {'calendarId' => calendar_id, 'text' => 'Problem Set #5 due Friday oct 11 at noon'},
+            :headers => {'Content-Type' => 'application/json'})
+
+		result = client.execute(
+			:api_method => service.events.quick_add,
+            :parameters => {'calendarId' => calendar_id, 'text' => 'Office Hours Monday 7 oct 2-4pm'},
             :headers => {'Content-Type' => 'application/json'})
 
 

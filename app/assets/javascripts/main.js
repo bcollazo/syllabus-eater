@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	if (location.pathname == "/dashboard") {
-//		$("#classesPanel").hide();
+		$("#classesPanel").hide();
 		$.ajax({url: "/processSyllabus", method: "GET", complete: function(data) {
 			$("#loadingspan").hide();
 			$("#classesPanel").show();
