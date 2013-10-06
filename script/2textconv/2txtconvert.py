@@ -8,7 +8,6 @@ def main(argv):
     addr = "../../public/uploads/"+ipdir
     os.chdir(addr)
     for inputfile in os.listdir("."):
-        print inputfile
         if inputfile.endswith('.pdf'):
             outfile = inputfile[:-3]+'txt'
             pdfextract.pdf2text(inputfile,outfile)
