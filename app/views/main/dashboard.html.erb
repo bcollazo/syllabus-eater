@@ -34,22 +34,42 @@
 	  <div class="row-fluid">
 		<div class="span12">	
       <p><strong>Instructor</strong></p>
-      <p><%= @information[c]["prof_name"] %></p>
+      <p><%= @information[c]["prof_name"][0] %></p>
+      <p><a href="mailto:#"><%= @information[c]["email"][0] %></a></p>
+      <p><%= @information[c]["phone"][0] %></p>
+      <p><%= @information[c]["office"][0] %></p>
       </div>
       </div>
 	<% end %>
-      <p><a href="mailto:#">kidhanis@mit.edu</a></p>
-      <p>1-800-PERREOS</p>
-      <p>Iglesia del Perreo (Office)</p>
     </div>
     <div class="tab-pane" id="tab2">
-      <iframe src="https://www.google.com/calendar/embed?src=97govrrrbtgthvpq8q1s4r4p5c%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    <% @classes.each do |c| %>
+	  <div class="row-fluid">
+		<div class="span12">
+	      <iframe src="https://www.google.com/calendar/embed?src=<%= @information[c]["calendar"][0] %>%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+      </div>
+      </div>
+	<% end %>
     </div>
     <div class="tab-pane" id="tab3">
-      The professor just picks cutoffs at random.
+    <p class="lead">This feature is not finished. We would have liked to have grading scheme information available as well as the ability to input current grades to calculate the current overall grade. Here is the string output: </p>
+    <% @classes.each do |c| %>
+	  <div class="row-fluid">
+		<div class="span12">
+          <p><%= @information[c]["grading_scheme"][0] %></p>		
+      </div>
+      </div>
+	<% end %>
     </div>
     <div class="tab-pane" id="tab4">
-      In the future, we would like to embed whereis.mit.edu here with the balloons at the lectures, recitations, office hours, etc.
+      <p class="lead">This feature is not yet finished. In the future, we would like to embed google maps or whereis.mit.edu here with the balloons at the lectures, recitations, office hours, etc. Here is the string output: </p>
+      <% @classes.each do |c| %>
+	  <div class="row-fluid">
+		<div class="span12">
+          <p><%= @information[c]["location"][0] %></p>		
+      </div>
+      </div>
+	<% end %>
       </div>
    </div>
   </div>
