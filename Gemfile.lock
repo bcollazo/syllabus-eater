@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/zquestz/omniauth-google-oauth2.git
-  revision: 29e03b3013d6e8500bfea4a4a3246975cfd3ddc3
-  specs:
-    omniauth-google-oauth2 (0.2.1)
-      omniauth (~> 1.0)
-      omniauth-oauth2
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,10 +90,14 @@ GEM
     omniauth (1.1.0)
       hashie (~> 1.2)
       rack
+    omniauth-google-oauth2 (0.2.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.17.0)
+    pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -168,7 +164,7 @@ DEPENDENCIES
   jquery-rails
   nifty-generators
   omniauth (= 1.1.0)
-  omniauth-google-oauth2!
+  omniauth-google-oauth2
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
