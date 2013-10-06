@@ -3,29 +3,38 @@ from __future__ import print_function
 from alchemyapi import AlchemyAPI
 import json
 
+alchemyapi = AlchemyAPI()
+
+# CONSTANTS
+PROF_KWS = {'prof.', 'professor', 'instructor', 'teacher', 'lecturer'}
+EMAIL_REGEXP = '' #TODO: Kido fill in
+PHONE_REGEXP = '' #TODO: Kido fill in
+
+# INITIALIZE EMPTY CLASS
+course = {"code": (None, 0),
+	"title": (None, 0),
+	"prof_name": (None, 0),
+	"email": (None, 0),
+	"phone": (None, 0),
+	"meeting_times": (None, 0),
+	"location": (None, 0),
+	"important_dates": (None, 0),
+	"grading_scheme":(None, 0)}
+
+
 f = open('../public/uploads/18510.txt', 'r')
-
 demo_text = f.read()
-
 n = len(demo_text)
 demo_text_sentences = demo_text.split(".")
-m = len(demo_text_sentences)
-c = -1
-while (c < m - 1):
-	c += 1
-	demo_text = demo_text_sentences[c]
-	if demo_text.strip() == "":
-		print("Text '"+demo_text+"' is empty")
+for i in demo_text_sentences
+
+	demo_text = i.strip()
+	if demo_text == "":
+		print("Text '"+i+"' is empty")
 		continue
-	print("Text to be processed:", demo_text)
+	print("Text to be processed:", i) 
 
 
-
-	#demo_url = 'http://blog.programmableweb.com/2011/09/16/new-api-billionaire-text-extractor-alchemy/'
-	#demo_html = '<html><head><title>Python Demo | AlchemyAPI</title></head><body><h1>Did you know that AlchemyAPI works on HTML?</h1><p>Well, you do now.</p></body></html>'
-		 
-
-	alchemyapi = AlchemyAPI()
 
 	print('############################################')
 	print('#   Entity Extraction Example              #')
