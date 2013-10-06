@@ -1,0 +1,58 @@
+(LOLtheorist by user zzyzx-xyzzy at livejournal)
+
+18.510 Introduction to Mathematical Logic and Set Theory
+
+Course Information
+Meetings: TR 2:30–4:00 in 4–153
+There will be no class on October 15, November 26, or November 28.
+Instructor: Henry Cohn
+Oﬃce: E18–422 [I’m normally at Microsoft Research, so you won’t ﬁnd me here
+except for oﬃce hours and other scheduled appointments.]
+Oﬃce Hours: Monday 1–2, Tuesday 4–5, and by appointment
+E-mail: cohn@microsoft.com
+Grading: nine homework assignments 50%, two exams 25% each. I’ll drop the
+lowest homework grade, so your best eight assignments will count for 6.25% each.
+If you are on the border between two grades, I’ll give you the higher grade if
+your performance improves towards the end of the course.
+Due dates: homework is due at the beginning of class on the speciﬁed date.
+Homework turned in later on the due date will be penalized 10%, and no
+homework will be accepted after the due date, except because of medical or
+family emergencies or religious obligation.
+First exam: Thursday, October 17, during class.
+Second exam: Thursday, December 5, during class.
+Both will be closed-book exams. The second exam will focus on the second half
+of the course (rather than being a comprehensive ﬁnal exam).
+Prerequisites: in principle, none. Everything we do will be built up from scratch
+and won’t depend on knowledge from previous courses.
+In practice, 18.510
+requires a certain level of mathematical maturity and comfort with abstraction
+and proofs. If you have not taken a proof-based mathematics class before, you
+will likely have trouble with this course.
+Text: none. I’ll distribute some lecture notes, and I’m happy to suggest relevant
+books. For the material on set theory towards the start of the course, here are
+some references:
+
+1
+
+Naive set theory , by Paul R. Halmos
+Basic set theory , by A. Shen and N. K. Vereshchagin
+Set theory, logic and their limitations , by Mosh´e Machover
+
+Attendance policy: you are adults, so I won’t take attendance or grade based on
+it. However, because we won’t be following a textbook, I strongly recommend
+attending class regularly. If you miss class, you should get notes from someone.
+
+Collaboration policy: you should write up everything on your own, and of
+course you should understand everything you turn in. It’s OK to consult with
+classmates, but this should take the form of working together, rather than
+copying completed solutions. It’s OK to use reference works, and it’s possible
+that you will occasionally ﬁnd a solution to a homework problem, but you should
+not deliberately search for solutions, and if you read a solution in the literature
+you should explain it in your own words (rather than copying it verbatim). You
+should not post homework questions to Q&A websites. If you collaborate with
+someone on a problem or learn a solution from some other source, you should
+acknowledge this on your problem set.
+
+2
+
+

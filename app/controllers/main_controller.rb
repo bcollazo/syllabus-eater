@@ -13,6 +13,7 @@ class MainController < ApplicationController
 				next
 			end
 			path = File.dirname(Rails.root.join("public/uploads", ip_address.to_s, uploaded_io.original_filename))
+			puts = "path = "+path
 			unless File.directory?(path)
 				FileUtils.mkdir_p(path)
 			end
@@ -20,17 +21,17 @@ class MainController < ApplicationController
 				file.write(uploaded_io.read)
 			end
 		end
-
-		value = %x(cat 'public/upload/18510.pdf' 2>&1)
-		puts "BRYAN ESSS EL CABALLO!! ", value
-
 		redirect_to dashboard_url
 	end
 
 	def dashboard
-		@classes = ["18.404 Theory of Computation",
-			"6.046 Design and Analysis of Algorithms",
-			"21M.645 Motion Theater"]
+		ip_address = request.remote_ip
+
+		value = %x('python scripts/2textconv/2totextconverter.py '+ip_address+ ' 2>&1')
+
+		kidoutput = %x('python alchemy.py 2>&1')
+
+		@classes = ["18.404 Theory"]
 	end
 
 end
