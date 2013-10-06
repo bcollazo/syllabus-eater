@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 from __future__ import print_function
 from alchemyapi import AlchemyAPI
+import unicodedata
 import json
 
 alchemyapi = AlchemyAPI()
 
 # CONSTANTS
 PROF_KWS = {'prof.', 'professor', 'instructor', 'teacher', 'lecturer'}
+WEEKDAYS = {'monday', 'tuesday', 'wednesday', 'thursday', 'friday'}
+MONTHS = {'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'november', 'december'}
+DATES_KWS = {'date', 'dates', 'meeting', 'meetings', 'appointment', 'appointments'}.union(WEEKDAYS).union(MONTHS)
 EMAIL_REGEXP = '' #TODO: Kido fill in
 PHONE_REGEXP = '' #TODO: Kido fill in
 
@@ -21,7 +25,6 @@ course = {"id": (None, 0),
 	"important_dates": (None, 0),
 	"grading_scheme": (None, 0)}
 
-	
 
 def getEntities(demo_text):
 #	print('############################################')
@@ -54,7 +57,7 @@ def getKeywords(demo_text):
 #		print('## Response Object ##')
 #		print(json.dumps(response, indent=4))
 		for keyword in response['keywords']:
-			keywords.append(keyword)
+			keywords.extend([keyword])
 #			print('text: ', keyword['text'])
 #			print('relevance: ', keyword['relevance'])
 		return keywords
@@ -107,6 +110,8 @@ def getCategory(demo_text):
 
 
 def processSyllabus():
+	print(DATES_KWS)
+
 	f = open('../public/uploads/18510.txt', 'r')
 	demo_text = f.read()
 	n = len(demo_text)
@@ -117,17 +122,21 @@ def processSyllabus():
 		if sentence == "":
 			print("Text '"+i+"' is empty")
 			continue
-		print("")
-		print("Sentence to be processed:", i)
 
 		entities = getEntities(sentence)
-
 		keywords = getKeywords(sentence)
 
-		if entities != None:
-			print("Entities:", [u["text"] for u in entities])
-		if keywords != None:
-			print("Keywords:", [u["text"] for u in keywords])
+		def getString(unic):
+			return unicodedata.normalize('NFKD', unic).encode('ascii','ignore').lowercase()
+			
+		if keywords == None:
+			if len(DATES_KWS.intersection({u["text"].lower() for u in keywords})) != 0:
+				print("")
+				print("Sentence to be processed:", i)
+				print("BINGO!")
+				if entities != None:
+					print("Entities:", [u["text"] for u in entities])
+					print("Keywords:", [u["text"] for u in keywords])
 
 
 processSyllabus()
