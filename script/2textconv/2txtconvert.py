@@ -5,9 +5,10 @@ import pdfextract
 
 def main(argv):
     ipdir = argv[1]
-    addr = "../public/uploads/127.0.0.1/"
+    addr = "../public/uploads/"+ipdir
     os.chdir(addr)
     for inputfile in os.listdir("."):
+		print inputfile
         if inputfile.endswith('.pdf'):
             outfile = inputfile[:-3]+'txt'
             pdfextract.pdf2text(inputfile,outfile)
@@ -21,6 +22,6 @@ def main(argv):
             outfp.close()
         else:
             print "Error: File not supported!"
-	return
+	    return
 
 if __name__ == '__main__': sys.exit(main(sys.argv))
