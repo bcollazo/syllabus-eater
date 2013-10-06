@@ -21,7 +21,7 @@
     <% @classes.each do |c| %>
 	 <div class="row-fluid">
 		<div class="well span12">
-			<%= c %>
+			<button class="link" id="<%= c %>"><%= c %></button>
 		</div>
 	</div>
 	<% end %>
@@ -58,7 +58,6 @@
 	<% end %>
     </div>
     <div class="tab-pane" id="tab3">
-    <p class="lead">This feature is not finished. We would have liked to have grading scheme information available as well as the ability to input current grades to calculate the current overall grade. Here is the string output: </p>
     <% @classes.each do |c| %>
 	  <div class="row-fluid">
 		<div class="span12">
@@ -68,7 +67,6 @@
 	<% end %>
     </div>
     <div class="tab-pane" id="tab4">
-      <p class="lead">This feature is not yet finished. In the future, we would like to embed google maps or whereis.mit.edu here with the balloons at the lectures, recitations, office hours, etc. Here is the string output: </p>
       <% @classes.each do |c| %>
 	  <div class="row-fluid">
 		<div class="span12">
